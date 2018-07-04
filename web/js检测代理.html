@@ -1,0 +1,76 @@
+<!--
+by EtherDream
+
+https://www.etherdream.com/FunnyScript/proxy_detect.html
+
+考题：如何用 JS 检测浏览器是否开了代理？
+
+答案很简单：浏览器开了代理后，域名解析就交给代理实现了，所以观察资源加载过程中 DNS 解析耗时是否为 0 即可。通过 Performance API 很容易实现：
+
+performance.timing.domainLookupEnd - performance.timing.domainLookupStart
+
+主要注意的是，DNS 是有缓存的。因此这里每次加载的域名都不一样，通过随机泛域名就能实现。
+
+当然，这个方案只能检测 HTTP/SOCK5 代理，VPN 还无法检测。
+
+这小技巧有什么用？挂在一个访问量巨大的网站上，就可以收集到大量的代理 IP 了~  
+-->
+
+<!doctype html>
+<html>
+<head>
+  <title>Proxy Detect</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1>HTTP/SOCK5 Proxy Detect</h1>
+  <div>
+    proxy status: <span id="state">?</span>
+  </div>
+  <div>
+    <button id="button">Update</button>
+  </div>
+  <script>
+  function checkProxy(callback) {
+    function runInFrame() {
+      var t = performance.timing;
+      var d = t.domainLookupEnd - t.domainLookupStart;
+      parent.postMessage(d, '*');
+    }
+
+    var rnd = (Math.random() * 9e6) | 0;
+    var url = 'https://' + rnd.toString(36) + '.w.ns6.top/'
+    
+    var box = document.body;
+    var frm = document.createElement('iframe');
+    frm.src = url;
+    frm.name = '(' + runInFrame + ')()';
+    frm.style.display = 'none';
+    box.appendChild(frm);
+
+    window.addEventListener('message', function(e) {
+      if (e.source === frm.contentWindow) {
+        box.removeChild(frm);
+        callback(e.data === 0);
+      }
+    });
+  }
+
+  function detect() {
+    state.textContent = 'detecting...';
+
+    checkProxy(function(exist) {
+      state.textContent = exist;
+    });
+  }
+
+  button.onclick = detect;
+  detect();
+
+  if (!window.performance || !performance.timing) {
+    state.textContent = 'not supported';
+    button.disabled = true;
+  }
+  </script>
+</body>
+</html>

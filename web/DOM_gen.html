@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <script>
+	  /*
+      function getEleAttributes(ele){
+        //there get the properties of OBJECT's prototype object
+		attr_buff = " ['"
+		func_buff = " ['"
+		buff = "["
+		console.log(ele)
+		ele = eval(ele).prototype
+        do 
+		{
+			props = Object.getOwnPropertyNames(ele)
+			for(var prop in props)
+			{
+				try
+				{	
+					if(typeof eval('ele.'+props[prop]) == "function")
+						func_buff = func_buff + props[prop] + ","
+					else
+						attr_buff = attr_buff + props[prop] + ","
+				}catch(e)
+				{
+					attr_buff = attr_buff + props[prop] + ","
+				}
+			}
+		}
+		while(ele = Object.getPrototypeOf(ele))
+        attr_buff = attr_buff + "']";
+		func_buff = func_buff + "']";
+		
+		buff = buff + "attribute : " + attr_buff + "];  "
+		buff = buff + "[method : " + func_buff + "]"
+        return buff
+      }
+	  
+	  function getEleMethods(ele){
+		buff = "['"
+		console.log(ele)
+		ele = eval(ele)
+		do
+		{
+			buff = buff + Object.getOwnPropertyNames(ele)
+		}
+		while(ele = Object.getPrototypeOf(ele))
+		buff = buff + "']"
+		return buff
+	  }
+	  */
+	  
+	  function getEleAttributes(obj) {
+		attr_buff = []
+		for( i in obj){
+			attr_buff.push(i)
+		}
+		return attr_buff;
+	  }
+	  
+      function generate() {
+		//val_element = ["Infinity","NaN","undefined","null"]
+		//static_element = ["Math","Date","JSON","Reflect","Proxy","Intl",]
+		//unsupport_element = ["SharedArrayBuffer","Atomics","Generator","GeneratorFunction","Iterator",]
+		//internal_element = ["arguments"]
+        //var js_element = ["Object","Function","Boolean","Symbol","Error","EvalError","RangeError","ReferenceError","SyntaxError","TypeError","URIError","Number","String","RegExp","Int8Array","Uint8Array","Uint8ClampedArray","Int16Array","Uint16Array","Int32Array","Uint32Array","Float32Array","Float64Array","Map","Set","WeakMap","WeakSet","Array","ArrayBuffer","DataView","Promise","Intl.Collator","Intl.DateTimeFormat","Intl.NumberFormat",]
+		
+		//operator = ['+','-','/','*','%','**','++','--','-','+','<<','>>','&','|','^','~','>>>','=','==','!=','===','!==','>','<','>=','<=']
+		
+		//main_buff = "ele_dict = {\n"
+		main_buff = []
+		dom_element = ["body"]
+        for (ele in dom_element){
+		  obj = document.createElement(dom_element[ele]);
+          all_props = getEleAttributes(obj)
+          //main_buff += "\t'"+js_element[ele] 
+          //main_buff += "': ["
+          //main_buff += all_props
+		  //main_buff += "], \n"
+		  main_buff = all_props;
+        }
+		/*
+		for (ele in static_element)
+		{
+		  all_methods = getEleMethods(static_element[ele])
+		  main_buff += "\t'"+static_element[ele] 
+		  main_buff += "': "
+          main_buff += all_methods
+		  main_buff += "\n"
+		}
+		*/
+        main_buff = main_buff
+        //main_buff += "}"
+        document.getElementById('result').innerHTML = main_buff;
+		
+      }
+	  
+    </script>
+  </head>
+  <body onload='generate();'>
+  <b>Output : (Copy paste following python dictionary to your testcase generator script and fuzz using them )</b></br>
+  <textarea id="result" rows="100" cols="200"></textarea>
+  </body>
+</html>

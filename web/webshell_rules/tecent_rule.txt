@@ -1,0 +1,732 @@
+version=20095;
+
+web_scan:
+{
+	app_rule_ver=4;
+	cgi_rule_ver=7;
+	websvr_type_rule_ver=1;
+	scan_interval=60;
+	chkwsc_interval=300;
+	alarm_interval=3600;
+	poll_info_interval = 86400;
+
+	max_cgipath_num=1024;
+	cgipath_sendcache=1024;
+	max_cgi_num=50000;
+	cgi_sendcache=5000;
+
+	max_webserver_num=32;
+	max_webshell_size=1048576;
+	max_webappverfile_size=1048576;
+	max_webapp_num=10240;
+	alarmfile_reportchars_num=255;
+	rpt_prefix_len=100;
+	rpt_match_len=255;
+	max_send_len=2048;
+
+	reload_webshell_pattern=1;
+	recheck_cgi=0;
+	max_report_unsafe_dir=5;
+
+	basemsg_interval = 86400;
+	inotifyqueue_overflow_interval = 86400;
+};
+
+web_guard:
+{
+	max_inotify_wd_num=1600000;
+	max_inotify_alarm_num=100;
+	max_inotify_modify_file_num=2000;
+	max_inotify_events_num=327679;
+	is_check_picture=1;
+	is_check_flash=0;
+	inotify_alarm_interval=2;
+	inotify_check_modify_interval=30;
+	report_inotify_num_interval=3600;
+};
+
+web_statis:
+{
+	thre_ic = 0.0236;
+	thre_entroy = 5.5801;
+	thre_wordlen = 2291;
+	thre_dcp = 0.2727;
+};
+
+websvr_type:
+{
+	all_websvr_type =
+	(
+		("apache", 0),
+		("tomcat", 1),
+		("nginx", 2),
+		("lighttpd", 3),
+		("resin", 4),
+		("qzhttp", 5),
+		("tomcat_jsvc", 6)
+	);
+	apache = 
+	(
+		("httpd", ""),
+		("httpd2-prefork", ""),
+		("httpd.worker", ""),
+		("apache2", ""),
+		("lt-httpd", ""),
+		("httpd_fix", ""),
+		("httpd2-worker", ""),
+		("httpd.httpd", ""),
+		("httpd.0", ""),
+		("apache", "")
+	);	
+	tomcat = 
+	(
+		("java", "catalina"),
+		("java", "tomcat"),
+		("glacier_cgi_java", "catalina"),
+		("glacier_cgi_java", "tomcat"),
+		("java.gdt.dmp.war", "catalina"),
+		("java.gdt.dmp.war", "tomcat"),
+		("java.gdt.placementApi", "catalina"),
+		("java.gdt.placementApi", "tomcat"),
+		("java_gdt_buyerapi_war", "catalina"),
+		("java_gdt_buyerapi_war", "tomcat"),		
+		("java.gdt.sdk.war", "catalina"),
+		("java.gdt.sdk.war", "tomcat"),
+		("java_gdt_dmposs_war", "catalina"),
+		("java_gdt_dmposs_war", "tomcat"),
+		("java_gdt_oos_pub_war-1.0", "catalina"),
+		("java_gdt_oos_pub_war-1.0", "tomcat"),
+		("java.gdt.Portal.war", "catalina"),
+		("java.gdt.Portal.war", "tomcat"),
+		("java_gdt_Snapshot_war-1.0", "catalina"),
+		("java_gdt_Snapshot_war-1.0", "tomcat"),
+		("java.gdt.mms.war", "catalina"),
+		("java.gdt.mms.war", "tomcat"),
+		("java.gdt.adnetwork_adnetwork.war", "catalina"),
+		("java.gdt.adnetwork_adnetwork.war", "tomcat"),
+		("java_gdt_dspreview_war", "catalina"),
+		("java_gdt_dspreview_war", "tomcat"),
+		("java_gdt_adx_dsp_war-1.0", "catalina"),
+		("java_gdt_adx_dsp_war-1.0", "tomcat"),
+		("java_gdt_innerssp_war", "catalina"),
+		("java_gdt_innerssp_war", "tomcat"),
+		("javacgi_qqconnect_api", "catalina"),
+		("javacgi_qqconnect_api", "tomcat"),
+		("gdt_review_web_war_java", "catalina"),
+		("gdt_review_web_war_java", "tomcat"),
+		("java.gdt.dev_api", "catalina"),
+		("java.gdt.dev_api", "tomcat"),
+		("gdt_review_onlineads_java", "catalina"),
+		("gdt_review_onlineads_java", "tomcat"),
+		("java.gdt.adEventMgr_api.war", "catalina"),
+		("java.gdt.adEventMgr_api.war", "tomcat"),
+		("java.gdt.adnetworkoss.war", "catalina"),
+		("java.gdt.adnetworkoss.war", "tomcat"),
+		("java_gdt_oos_web_war-1.0", "catalina"),
+		("java_gdt_oos_web_war-1.0", "tomcat"),
+		("java.gdt.review_review.war", "catalina"),
+		("java.gdt.review_review.war", "tomcat"),
+		("java.gdt.ueet.war", "catalina"),
+		("java.gdt.ueet.war", "tomcat"),
+		("java.gdt.union_hawk", "catalina"),
+		("java.gdt.union_hawk", "tomcat"),
+		("java_gdt_adnetworkoss1_war", "catalina"),
+		("java_gdt_adnetworkoss1_war", "tomcat")
+	);
+	nginx = 
+	(
+		("nginx", ""),
+		("gdt_nginx_proxy", ""),
+		("nginx-x64-ms", ""),
+		("nginx-x64", ""),
+		("nginx-x32-ms", ""),
+		("nginx-x64-boss", ""),
+		("nginx_forward", ""),
+		("nginx_tlinux_x64_ms", ""),
+		("nginx.1.6.2", ""),
+		("nginx_Wechat", ""),
+		("nginx-x64-nodebug", ""),
+		("cdn_nginx", ""),
+		("nginx.old", ""),
+		("nginx-x64-ms-cdncombo", ""),
+		("nginx_tlinux_x64", ""),
+		("nginx-x64-concat", ""),
+		("nginx-x64-debug", ""),
+		("nginx.menshen", ""),
+		("nginx-x64-mat1-nodebug", ""),
+		("nginx_dynamic", ""),
+		("nginx_proxy", ""),
+		("nginx-1.8.1", ""),
+		("nginx-1.0.6-x64-wd-nodebug", ""),
+		("nginx_static", ""),
+		("nginx_kf", ""),
+		("nginx_exporter", ""),
+		("tnginx", ""),
+		("nginx-x64-wd-ms", ""),
+		("nginx-1.7.8", ""),
+		("https_nginx", ""),
+		("mmdeploytgw_nginx", ""),
+		("nginx-hybin", ""),
+		("nginx-1.8.0", ""),
+		("nginx-1.5.6", ""),
+		("gdt_nginx_proxy_new", ""),
+		("nginxdebug", ""),
+		("nginx_with_ssl_memshen", ""),
+		("nginx_upptpp", ""),
+		("nginx_tnginx_1.0.42", ""),
+		("nginx_pre", ""),
+		("nginx_mt", ""),
+		("nginx_log", ""),
+		("nginx_big5", ""),
+		("nginx443", ""),
+		("nginx17", ""),
+		("nginx.new", ""),
+		("nginx.bak", ""),
+		("nginx-x64-mat1", ""),
+		("qnginx", ""),
+		("nginx_sels_x64", ""),
+		("nginx-x64-suse-boss", ""),
+		("nginx-x32", ""),
+		("nginx-1.0.6-x32-wd-nodebug", ""),
+		("qqnginx", "")
+	);
+	lighttpd = 
+	(
+		("lighttp", ""),
+		("lighttp2", ""),
+		("lighttp3", "")
+	);
+	resin = 
+	(
+		("java", "resin\.home")
+	);
+	qzhttp = 
+	(
+		("qzhttp", ""),
+		("qzhttp-gcc4.1-ver1.0.0", ""),
+		("frame_qzhttp", ""),
+		("qzhttp_openapi", ""),
+		("qzhttp-gcc4.1-ver1.0.0.field", "")
+	);
+	tomcat_jsvc =
+	(
+		("jsvc", "catalina"),
+		("jsvc", "tomcat")
+	);
+};
+
+file_type:
+{
+	cgi_file = "\\.(css|js|bmp|jpg|gif|png|flv|wmv|asf|asx|rm|rmvb|mpg|mpeg|mpe|3gp|mov|mp4|m4v|avi|mkv|vob|log|html|htm)$";
+	webshell_file = 
+	(
+		("php_shell", "\\.(php|php3)$"),
+		("jsp_shell", "\\.(jsp|jspx)$")
+	);
+};
+
+web_app_ver:
+{
+	/* app,type,file_path,ver_reg */
+	/* type:0, get ver from file_path */
+	/* type:1, use ver_reg, get ver from file content */
+	app_cfg = (
+		("struts", 0, "(?:/struts[\\d]*-core-(?<ver>[\\d\\.]+)\\.jar)$", ""),
+		("struts_rest", 0, "(?:/struts\\d*-rest-plugin-(?<ver>[\\d\\.]+)\\.jar)$", ""),
+		("struts1", 0, "(?:/(?<ver>struts)\\.jar)$", ""),
+		("shiro-core", 0, "(?:/shiro-core-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-all", 0, "(?:/shiro-all-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-web", 0, "(?:/shiro-web-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-aspectj", 0, "(?:/shiro-aspectj-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-cas", 0, "(?:/shiro-cas-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-ehcache", 0, "(?:/shiro-ehcache-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-features", 0, "(?:/shiro-features-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-guice", 0, "(?:/shiro-guice-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-quartz", 0, "(?:/shiro-quartz-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-spring", 0, "(?:/shiro-spring-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-tools-hasher", 0, "(?:/shiro-tools-hasher-(?<ver>[^/]*)-cli\\.jar)$", ""),
+		("discuz_app", 0, "(?:uc_server/control/(?<ver>app).php$)", ""),
+		("discuz7", 1, "(?:/templates/uchome/discuz_style_uchome\\.xml)$", "<item\\s*id\\s*=\\s*\"Version\">\\s*<!\\[CDATA\\[(?<ver>[\\d\\.]+)\\]\\]>\\s*</item>"),
+		("discuzX", 1, "(?:/template/default/discuz_style_default\\.xml)$", "<item\\s*id\\s*=\\s*\"Version\">\\s*<!\\[CDATA\\[(?<ver>[\\d\\w\\W\\.]+?)\\]\\]>\\s*</item>"),
+		("discuz_version", 1, "(?:/source/discuz_version\\.php)$", "define\\('DISCUZ_VERSION',\\s*'(?<ver>.*)'"),
+		("discuz_release", 1, "(?:/source/discuz_version\\.php)$", "define\\('DISCUZ_RELEASE',\\s*'(?<ver>.*)'"),
+		("discuz_fixbug", 1, "(?:/source/discuz_version\\.php)$", "define\\('DISCUZ_FIXBUG',\\s*'(?<ver>.*)'"),
+		("uchome", 1, "(?:/space\\.php)$", "(?<ver>UCenter\\s*Home)"),
+		("wordpress", 1, "(?:/wp-includes/version\\.php)$", "\\$wp_version\\s*=\\s*'(?<ver>[\\d\\.]+)'"),
+		("ThinkPHP2", 1, "(?:/Common/defines\\.php)$", "\\s*define\\s*\\(\\s*'THINK_VERSION'\\s*,\\s*'(?<ver>[\\d\\.]+).*'\\s*\\)"),
+		("ThinkPHPRelease", 1, "(?:/Common/runtime\\.php)$", "\\s*define\\s*\\(\\s*'THINK_RELEASE'\\s*,\\s*'(?<ver>[\\d\\.]+)'\\s*\\)"),
+		("ThinkPHP3", 1, "(?:/Common/runtime\\.php)$", "\\s*define\\s*\\(\\s*'THINK_VERSION'\\s*,\\s*'(?<ver>[\\d\\.]+)'\\s*\\)"),
+		("ThinkPHP3.2", 1, "(?:/ThinkPHP\\.php)$", "const\\s*THINK_VERSION\\s*=\\s*'(?<ver>[\\d\\.]+)'\\s*;"),
+		("ThinkPHP3.2Release", 1, "(?:/ThinkPHP\\.php)$", "const\\s*THINK_RELEASE\\s*=\\s*'(?<ver>[\\d\\.]+)'\\s*;"),
+		("ThinkPHPatch2.1", 1, "(?:/Dispatcher\\.class\\.php)$", "unset\\(\\$_POST\\[\\$var\\],\\$_GET\\[\\$var\\]\\);\\s*return\\s*(?<ver>.*?);\\s*\\}"),
+		("ThinkPHPatch2.2-3.0", 1, "(?:/Dispatcher\\.class\\.php)$", "\\*\\s*@version\\s*\\$Id:\\s*Dispatcher\\.class\\.php\\s*(?<ver>\\d*)\\s*"),
+		("phpMyAdmin", 1, "(?:/libraries/(Config\\.class\\.php|Config\\.php))$", "\\(\\s*'PMA_VERSION'\\s*,\\s*'(?<ver>[\\d\\.]+)'\\)"),
+		("FckEditor0.8-2.0", 1, "(?:/dialog/fck_about\\.html)$", "(version|version</span>) \\s*<b>(?<ver>(\\d\.)*\\d.*?)</b></td>"),
+		("FckEditor2.0-2.3", 1, "(?:/_whatsnew\\.html)$", "FCKeditor(.*\\s)*<body>\\s*<[Hh]3>\\s*Version\\s*(?<ver>(\\d\\.)*\\d)(&nbsp;)?\\s*\.*</[Hh]3>"),
+		("FckEditor2.3+", 1, "(?:/fckeditor\\.js)$","(\\s*\\*\\s*Version:\\s*((?<ver>(\\d+\.)\\d+\.*)))|(FCKeditor\\.prototype\\.Version\\s+=\\s'(?<ver>(\\d+\\.)*\\d+\.*)'\\s;)"),
+		("fckeditor_java", 0, "(?i)fckeditor(-java-core)?-(?<ver>.*)\\.jar$", ""),
+		("ckeditor_java", 0, "(?i)ckeditor(-java-core)?-(?<ver>.*)\\.jar$", ""),
+		("CkEditor", 1, "(?:/ckeditor\\.js)$", ",version:['\"](?<ver>(\\d+\\.)*\\d)['\"],"),
+		("xwork", 0, "(?:/xwork-(core-)?(?<ver>[\\d\\.]+)\\.jar)$",""),
+		("dokuwiki", 0, "(?:/(?<ver>doku)\\.php)$", ""),
+		("cookie_xss", 0, "(?i)(?<ver>loginmanager.*)\\.js$", ""),
+		("cookie_xss3", 1, "(?i)\\.js$","(?<ver>(document\\.cookie\\.match\\(RegExp\\(\"\\(\\^\\|\\s*\\)\"|new\\s*RegExp\\(\"\\(\\^\\|\\s*\\)\"|document\\.cookie\\.indexOf\\(\";\"|document\\.cookie\\.split\\(\"\\s*\"\\);|new\\s*RegExp\\(\"\\(\\^\\|;\\|\\\\s\\)))"),
+		("php_mailer", 1, "(?i)mail.*?\\.php$","public +?\\$Version +?= +?'(?<ver>[^']*?)';"),
+		("ecmall", 1, "(?:/ecmall\\.php)$","define\\('VERSION', +'(?<ver>[^']*)'\\);"),
+		("pmwiki", 0, "(?:/(?<ver>pmwiki)\\.php)$", ""),
+		("commons-fileupload", 0, "(?:/commons-fileupload(?<ver>.*)\\.jar)$", ""),
+		("danger_wordpress_plugin", 0, "/wp-content/plugins/(?<ver>.*?)/readme\\.txt$",""),
+		("danger_suffix", 0, "(?i)(?:(?<ver>(/[^/]*(\\.bak|\\.old|\\.zip|\\.rar|\\.war|\\.7z|\\.tgz|\\.gz|\\.bz2|\\.tar))$))", ""),
+		("guzzle", 1, "(?i)/ClientInterface\\.php$","const\\s*VERSION\\s*=\\s*'(?<ver>[^']*)';"),
+		("danger_proxy",1, "/[^/]*?\\.php$","(?i)(?<ver>getenv\\s*\\(\\s*['\"]\\s*HTTP_PROXY\\s*['\"]\\s*\\)|\\$_SERVER\\[\\s*['\"]\\s*HTTP_PROXY\\s*['\"]\\s*\\])"),
+		("artax", 1, "(?i)/HttpSocketPool\\.php$","(?i)(?<ver>getenv\\('http_proxy'\\))"),
+		("artax_safe", 1, "(?i)/HttpSocketPool\\.php$","(?<ver>PHP_SAPI\\s*!=\\s*\"cli\")"),
+		("fastjson", 0, "fastjson-(?<ver>.*)\\.jar$", "")
+	);
+};
+
+app_forbid_dir:
+{
+	/* app, dir*/
+	forbid_dir = (
+		("discuzX3", ".+(/config)$"),
+		("discuzX3", ".+(/data)$"),
+		("discuzX3", ".+(/uc_client/data)$"),
+		("discuzX3", ".+(/uc_server/data)$"),
+		("wordpress", ".+(/wp-content/uploads)$"),
+		("fckeditor", ".+(/userfiles)$")
+	);
+};
+
+php_shell:
+{
+	/* name, caseless, id, pattern, pcre_dotall? */
+	pattern_list = (
+		("common_webshell1", 0, 10101, "(?i)[\\r\\n;/\\*]+\\s*\\b(include|require)(_once)?\\b[\\s\\(]*['\"][^\\n'\"]{1,100}((\\.(jpg|png|txt|jpeg|log|tmp|db|cache)|\\_(tmp|log))|((http|https|file|php|data|ftp)\\://.{0,25}))['\"][\\s\\)]*[\\r\\n;/\\*]+",0),
+		("common_webshell2", 0, 10102, "(?i)(?<!->)\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\b[/*\\s]*\\(+[/*\\s]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*(\\$_(GET|POST|REQUEST|COOKIE).{0,25}))",0),
+		("common_webshell3", 0, 10103, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*(\\$_(GET|POST|REQUEST|COOKIE).{0,25});[\\s\\S]{0,200}(?<!\\>)\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\b[/*\\s]*\\(+[\\s\"/*]*(\\$\\s*\\1|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(\"]*\\$\\s*\\1))",0),
+		("common_webshell4", 0, 10104, "(?i)(preg_replace|preg_filter)[/*\\s]*\\(+[/*\\s]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|[^,]{0,250}chr[\\s\\(](101|0x65|0145|\\d+)[^,]{0,25}\\s*|['\"]\\s*(([^\\s])[^,]{0,20}\\7['\"]*|[\\(\\}\\[].{0,20}[\\(\\}\\]])\\w*e\\w*['\"])\\s*,([^\\),]*(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)|((\\$_(GET|POST|REQUEST|COOKIE).{0,25})))",0),
+		("common_webshell5", 0, 10105, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|[^;]*chr[\\s\\(]*(101|0x65|0145|\\d+)|['\"](/[^/]*/|\\|[^\\|]*\\||\\\\'[^']*')\\w{0,5}e\\w{0,5}['\"])[\\s\\S]{0,1000}(preg_replace|preg_filter)[/*\\s]*\\([/*\\s]*\\$\\s*\\1.{0,30}(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)",0),
+		("common_webshell6", 0, 10106, "(?i)\\$\\s*(\\w+)\\s*=\\s*(\\$_(GET|POST|REQUEST|COOKIE).{0,25})[\\s\\S]{0,1000}(preg_replace|preg_filter)[/*\\s]*\\(+[/*\\s]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|[^,]{0,250}chr[\\s\\(](101|0x65|0145|\\d+)[^,]{0,25}\\s*|['\"]\\s*(([^\\s])[^,]{0,20}\\10|[\\(\\}\\[].{0,20}[\\(\\}\\]])\\w*e\\w*['\"])\\s*,([^\\)]*(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)|\\s*\\$\\1)",0),
+		("common_webshell7", 0, 10107, "(?i)(array_map|call_user_func|call_user_func_array|new\\s*ReflectionFunction|register_shutdown_function|register_tick_function|new\\s*ArrayObject[\\s\\S]*->u[ak]sort)\\s*\\(+\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|[^'\"]*\\\\x).{0,200}|(\\$_(GET|POST|REQUEST|COOKIE)\\[[^,;\\)]{0,250},[^;\\),]{0,50}\\$[^;\\),]{0,50}\\)))",0),
+		("common_webshell8", 0, 10108, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec))[\\s\\S]{0,200}(?<!\\>)\\b(array_map|call_user_func|call_user_func_array|new\\s*ReflectionFunction|register_shutdown_function|register_tick_function|new\\s*ArrayObject[\\s\\S]*->u[ak]sort)\\b\\s*\\(+\\s*(\\$\\s*\\1|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))[^,;]*,[^;\\)]{0,50}\\$[^;\\)]{0,50}\\)",0),
+		("common_webshell9", 0, 10109, "(?i)((array_filter|array_reduce|array_diff_ukey|array_udiff|array_walk|uasort|uksort|usort|new\\s*SQLite3[\\s\\S]*->\\s*createFunction)\\s*\\(+\\s*.{1,100}|PDO::FETCH_FUNC\\s*),\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\s*['\"]|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]+.{1,25}|(\\$_(GET|POST|REQUEST|COOKIE).{0,25}))\\s*\\)",0),
+		("common_webshell10", 0, 10110, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|[^,;]*?\\\\x|[^,;]*?['\"]\\s*\\.\\s*['\"]))[\\s\\S]{0,1000}(?<!\\>)((array_filter|array_reduce|array_diff_ukey|array_udiff|array_walk|uasort|uksort|usort|new\\s*SQLite3[\\s\\S]*->\\s*createFunction)\\s*\\(+[^,]*\\$[^,]*|PDO::FETCH_FUNC\\s*),\\s*(\\$\\s*\\1\\s*\\)|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))",0),
+		("common_webshell11", 0, 10111, "(?i)\\$(\\w*)\\s*=\\s*\\bcreate_function\\b\\s*\\(+\\s*[^;\\n\\r\\)]{1,100},\\s*(['\"]\\s*[^;\\n\\r\\)]{0,100}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|poc_open|pcntl_exec).{1,600}\\s*['\"]|[^,]{0,100}(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{1,})|[^,\\n\\r\\)]{0,100}file_get_contents.{1,})\\s*\\)[\\s\\S]+\\$\\1\\s*\\([^\\)]*\\)",0),
+		("common_webshell12", 0, 10112, "(?i)\\$(\\w*)\\s*=\\s*\\bcreate_function\\b\\s*\\([^;]*;[\\s\\S]*\\$\\1\\s*\\([^\\)]*(['\"]\\s*[^;\\n\\r\\)]{0,100}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|poc_open|pcntl_exec).{1,600}\\s*['\"]|[^;\\n\\r]{0,100}(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{1,})|[^;\\n\\r\\)]{0,100}file_get_contents.{1,})",0),
+		("common_webshell13", 0, 10113, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*.{0,100}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec).{1,100}\\s*['\"]|file_get_contents)[\\s\\S]{0,200}create_function\\s*\\(+[^,]{1,100},['\"\\s]*(\\$\\s*\\1['\"\\s]*\\)|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))",0),
+		("common_webshell14", 0, 10114, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\s*['\"]|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)\\s*\\()[\\s\\S]{0,200}(?<![:>\\s])\\s*\\$\\1\\s*\\(+[^\\)]*(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})",0),
+		("common_webshell15", 0, 10115, "(?i)sqlite_create_function\\s*\\([\\s\\S]{0,200}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)|(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)[\\s\\S]{0,200}sqlite_create_function\\s*\\(",0),
+		("common_webshell25", 0, 10116, "(?i)\\b(filter_var|filter_var_array)\\b\\s*\\(.*FILTER_CALLBACK[^;]*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec))",0),
+		("common_webshell16", 0, 10117, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\s*['\"]|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)\\s*\\()[\\s\\S]{0,200}\\b(filter_var|filter_var_array)\\b\\s*\\(.*FILTER_CALLBACK[^;]*\\$\\1",0),
+		("common_webshell17", 0, 10118, "(?i)\\b(mb_ereg_replace|mb_eregi_replace)\\b\\s*\\((.*,){3}\\s*(['\"][^,\"'\\)]*e[^,\"'\\)]*['\"]|.*(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25}).*|chr\\s*\\(\\s*101|chr\\s*\\(\\s*0x65|chr\\s*\\(\\s*0145)\\s*\\)",0),
+		("common_webshell25", 0, 10119, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{3,25})|['\"][^;]*e|[^;]*chr[\\s\\(]*(101|0x65|0145))[\\s\\S]{0,200}\\b(mb_ereg_replace|mb_eregi_replace)\\b\\s*\\((.*,){3}\\s*\\$\\1",0),
+		("common_webshell18", 0, 10120, "(?i)array_walk(_recursive)?\\s*\\([^;,]*,\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|preg_replace)\\s*['\"]|(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25}))",0),
+		("common_webshell19", 0, 10121, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|preg_replace))[\\s\\S]{0,200}array_walk(_recursive)?\\s*\\([^;,]*,\\s*(\\$\\s*\\1|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))",0),
+		("common_webshell20", 0, 10122, "(?i)\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|include)\\b\\s*\\(\\s*(file_get_contents\\s*\\(\\s*)?['\"]php://input",0),
+		("common_webshell21", 0, 10123, "^(\\xff\\xd8|\\x89\\x50|GIF89a|GIF87a|BM|\\x00\\x00\\x01\\x00\\x01)[\\s\\S]*<\\?\\s*php",0),
+		("common_webshell22", 0, 10124, "\\$(\\w)=\\$[a-zA-Z]\\('',\\$\\w\\);\\$\\1\\(\\);",0),
+		("common_webshell23", 0, 10125, "(?i)\\$(\\w+)\\s*=\\s*str_replace\\s*\\([\\s\\S]*\\$(\\w+)\\s*=\\s*\\$(\\w+)(([\\s\\S]{0,255})|(\\s*\\(\\'\\',\\s*(\\$(\\w+)\\s*\\(\\s*)+))\\$\\1\\s*\\([\\s\\S]{0,100};?\\s*\\$\\2\\(?\\s*\\)",0),
+		("common_webshell24", 0, 10126, "(?i)ob_start\\s*\\(+\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec).{0,20}|['\"]\\s*\\w+[\\s\\S]{1,50}phpinfo\\s*\\(\\s*\\))",0),
+		("common_webshell25", 0, 10127, "\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\b\\s*\\(((\\$_SERVER|\\$_ENV|getenv|\\$GLOBALS)\\s*[\\[\\(]\\s*['\"]+(REQUEST_URI|QUERY_STRING|HTTP_[\\w_]+|REMOTE_[\\w_])['\"\\s]+\\s*[\\]\\)]|php://input|exif_read_data\\s*\\()",0),
+		("common_webshell24", 0, 10128, "eval\\(\"\\?>\"\\.|gzinflate\\(base64_decode\\(|eval\\(base64_decode\\(|cat\\s*/etc/passwd|Safe_Mode\\s*Bypass",0),
+		("common_webshell25", 0, 10129, "\\$_\\[\\$_|\\${\"_P\"\\.|a(.)s\\1s\\1e\\1r\\1t|'e'\\.'v'\\.'a'\\.'l|687474703a2f2f626c616b696e2e64756170702e636f6d2f7631|python_eval\\(\"import os\\\\nos.system\\(|\\$bind_pl\\s*=\\s*\"IyEvdXNyL2Jpbi9lbnYgcGV|phpsocks5_encrypt\\s*\\(|eNrs/Vmv41iWJgq+ZwH1H7wdAWRksypJihRF3kQ0mvMsihTnuoUA53meeVG/valj5mbuHpF9b6P7se",0),
+		("common_webshell25", 0, 10130, "preg_replace\\s*\\(\\s*['\"][^;]*e[^;]*['\"],([^;]{0,30}\\\\x|[^;\\)]{200,300})|\\$back_connect=\"IyEvdXNyL2Jpbi9wZXJsDQp1c2UgU2|define\\('gzip',function_exists\\(\"ob_gzhandler\"\\)|chr\\(112\\)\\.chr\\(97\\)\\.chr\\(115\\)\\.chr\\(115\\)|687474703a2f2f377368656c",0),
+		("common_webshell24", 0, 10131, "ini_get\\s*\\(\\s*\"disable_functions\"\\s*\\)|\\d\\s*=>\\s*array\\s*\\(\\s*['\"]\\s*pipe\\s*['\"]|gzuncompress\\(base64_decode\\(|crypt\\(\\$_SERVER\\['HTTP_H0ST'\\],\\d+\\)==|if\\(file_exists\\(\\$settings\\['STOPFILE'\\]\\)\\)",0),
+		("common_webshell25", 0, 10132, "\\$nofuncs='no\\s*exec\\s*functions|udf\\.dll|\\$b374k|POWER-BY\\s*WWW.XXDDOS.COM|<title>Safes\\s*Mode\\s*Shell</title>|Siyanur\\.PHP\\s*</font>|c999shexit\\(\\)|\\$c99sh_|c99_sess_put\\(|Coded\\s*by\\s*cyb3r|cyb3r_getupdate\\(|coded\\s*by\\s*tjomi4|john\\.barker446@gmail\\.com|eval\\(\"\\\\\\$x=gzin\"|eval\\(\"\\?>\"\\.gzinflate\\(base64_decode\\(|eval\\(gzinflate\\(base64_decode\\(|eval\\(gzuncompress\\(base64_decode\\(|eval\\(gzinflate\\(str_rot13\\(base64_decode\\(|function_exists\\(\"zigetwar_buff_prepare\"\\)|dQ99shell|r57shell|c99shell|lama's'hell\\s*v|Carbylamine\\s*PHP\\s*Encoder|Safe\\s*Mode\\s*Shell|\\$dI3h=\\${'_REQUEST'};|new\\s*COM\\(\"IIS://localhost/w3svc\"\\)|n57http-based\\[\\s*-\\]terminal|Dosya\\s*Olu|errorlog\\(\"BACKEND:\\s*startReDuh,|form\\s*name=sh311Form|PHPJackal<br>|Reddragonfly's\\s*WebShell|\\(\"system\"==\\$seletefunc\\)\\?system\\(\\$shellcmd\\)|eNrsvGmT40iSKPZ5xmz|CrystalShell\\s*v\\.|Special\\s*99\\s*Shell|Simple\\s*PHP\\s*Mysql\\s*client|'_de'\\.'code'|phpsocks5_encrypt\\(|define\\('PHPSHELL_VERSION',|ZXZhbCgkX1BPU1RbMV0p|\\$__H_H\\(\\$__C_C",0),
+		("common_webshell25", 0, 10133, "PD9waHANCiRzX3ZlciA9ICIxLjAiOw0KJHNfdGl0bGUgPSAiWG5vbnltb3V4IFNoZWxsIC|GFnyF4lgiGXW2N7BNyL5EEyQA42LdZtao2S9f|IyEvdXNyL2Jpbi9wZXJsDQokU0hFTEw9Ii9iaW4vYmFzaCAtaSI7|setcookie\\(\"N3tsh_surl\"\\);|function\\s*Tihuan_Auto|\\$_COOKIE\\['b374k'\\]|function_exists\\(\"k1r4_sess_put\"\\)|http://www.7jyewu.cn/|scookie\\('phpspypass|PHVayv.php\\?duzkaydet=|phpRemoteView</a>|define\\('envlpass',|KingDefacer_getupdate\\(|relative2absolute\\(|Host:\\s*old.zone-h.org|<h3>PHPKonsole</h3>|\\$_SESSION\\['hassubdirs'\\]\\[\\$treeroot\\]|strtolower\\(\\$cmd\\)\\s*==\\s*\"canirun\"|\\$shell\\s*=\\s*'uname\\s*-a;\\s*w;\\s*id;|Avrasya\\s*Veri\\s*ve\\s*NetWork|<h1>Linux Shells</h1>|\\$MyShellVersion\\s*=\\s*\"MyShell|<a\\s*href=\"http://ihacklog.com/\"|setcookie\\(\\s*\"mysql_web_admin_username\"\\s*\\)|<title>PHP\\s*Shell\\s*[^\\n\\r]*</title>|\\$OOO000000=urldecode|1MSSYowqjzlVVAwAoHHFXzQ5Lc|'xiaoqiwangluo'|EqQC1FhyXxpEi7l2g\\+yNjW62S|\\$_uU\\(83\\)\\.\\$_uU\\(84\\)|7kyJ7kSKioDTWVWeRB3TiciL1UjcmRiLn4SKiAETs90cuZlTz5mROtHWHdWfRt0ZupmVRNTU2Y2MVZkT8|<title>\\s*ARS\\s*Terminator\\s*Shell</title>|base64_decode\\(\"R0lGODdhEgASAKEAAO7u7gAAAJmZmQAAACwAAA|\\\\x50\\\\x4b\\\\x03\\\\x04\\\\x0a\\\\x00\\\\x00\\\\x00\\\\x00|'<title>W3D\\s*Shell|\\$back_connect=\"IyEvdXNyL2Jpbi9wZXJsD",0),
+		("common_webshell30", 0, 10135,	"\\$(\\w+)[\\s]*\\=[\\s]*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}[\\s\\S]*(?<!\\>)\\$(?:\\1\\(\\s*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}\\s*\\)|(\\w+)\\s*\\=\\s*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}[\\s\\S]*(?<!\\>)\\$(\\1\\(\\s*\\$\\2|\\2\\(\\s*\\$\\1)\\s*\\)|_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}\\(\\s*\\$\\1\\s*\\))|\\$_(?:POST|GET|REQUEST|COOKIE|SERVER)\\[(['\"]\\w+['\"]|\\d+)\\]\\(\\s*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER)\\[(['\"]\\w+['\"]|\\d+)\\]\\s*\\)", 0)
+	);
+};
+
+jsp_shell:
+{
+	pattern_list = (
+		("str_pattern", 0, 1001, "\\bJFolder|\\bwebshell|\\bvonloesch\\.de|reDuh\\.jsp|QQ:179189585|JSP\\s*文件管理器|\\bJSPSpy|\\bKJ021320", 0),
+		("exec_cmd", 1, 3001, "(?:(?:java\\.lang\\.)?Runtime)?\\s*(\\w+)\\s*=\\s*(?:java\\.lang\\.)?Runtime\\.getRuntime\\(\\)[\\s\\S]*\\1\\.exec\\(.*?\\)", 0),
+		("exec_cmd2", 1, 3002, "new\\s*(java\\.io\\.)?ProcessBuilder\\(.*?\\)", 0),
+		("browse_file", 1, 5001, "(\\.(listFiles|list|listRoots)\\s*\\(.+\\.(readLine|read)\\s*\\(.+\\.write\\s*\\()|(\\.(readLine|read)\\s*\\(.+\\.write\\s*\\(.+\\.(listFiles|list|listRoots)\\s*\\()", 1),
+		("create_file", 0, 5002, "new\\s*(java\\.io\\.)?(FileOutputStream|PrintWriter|FileWriter|RandomAccessFile)\\(.*?\\)", 0),
+		("upload_file", 0, 5003, "new\\s*((java\\.io\\.)?ServletFileUpload|(com\\.jspsmart\\.upload\\.)?SmartUpload)\\(\\)", 0),
+		("net_socket", 0, 7001, "new\\s*(java\\.net\\.)?ServerSocket\\(.*?\\)", 0),
+		("net_socket2", 0, 7002, "new\\s*(java\\.net\\.)?Socket\\(.*?\\)", 0),
+		("net_socket3", 0, 7003, "new\\s*(java\\.net\\.)?InetSocketAddress\\(.*?\\)", 0),
+		("http_connect", 0, 7004, "(\\w+)\\s*=\\s*new\\s*(java\\.net\\.)?URL\\(.*?\\)[\\s\\S]*\\1\\.openConnection\\(\\)", 0),
+		("java_command", 0, 12101, "Runtime\\.getRuntime\\(\\)\\.exec", 0),
+		("java_unicode", 0, 12102, "(\\\\u00\\w\\w){3,}", 0),
+		("java_class_invoke", 0, 12103, "\\.getMethod\\(.*?\\.invoke", 0),
+		("java_class_invoke2", 0, 12104, "(?:(?:java\\.lang\\.reflect\\.)?Method)?\\s*(\\w+)\\s*=\\s*.*\\.getMethod\\([\\s\\S]*\\1\\.invoke\\(.*?\\)", 0),
+		("java_url_loader", 0, 12105, "java\\.net\\.URLClassLoader", 0),
+		("sql_connect", 0, 12301, "(java\\.sql\\.)?DriverManager\\.(getConnection|registerDriver)\\(.*?\\)", 0),
+		("sql_query", 0, 12302, "(ResultSet)?\\s*\\w+\\s*=\\s*\\w+\\.executeQuery\\(.*?\\)", 0),
+		("jdbc_drivers", 0, 12303, "COM\\.ibm\\.db2\\.jdbc\\.app\\.DB2Driver|COM\\.ibm\\.db2\\.jdbc\\.DB2XADataSource|COM\\.ibm\\.db2\\.jdbc\\.net\\.DB2Driver|com\\.informix\\.jdbc\\.IfxDriver|com\\.informix\\.jdbcx\\.IfxXADataSource|org\\.apache\\.derby\\.jdbc\\.ClientDriver|com\\.microsoft\\.sqlserver\\.jdbc\\.SQLServerDriver|com\\.microsoft\\.jdbc\\.sqlserver\\.SQLServerDriver|com\\.mysql\\.jdbc\\.Driver|org\\.gjt\\.mm\\.mysql\\.Driver|oracle\\.jdbc\\.driver\\.OracleDriver|oracle\\.jdbc\\.xa\\.client\\.OracleXADataSource|oracle\\.jdbc\\.driver\\.OracleDriver|oracle\\.jdbc\\.xa\\.client\\.OracleXADataSource|com\\.tongweb\\.jdbc\\.OracleDriverWrapper|org\\.postgresql\\.Driver|com\\.sybase\\.jdbc\\.SybDriver|com\\.sybase\\.jdbc2\\.jdbc\\.SybXADataSource|org\\.hsqldb\\.jdbcDriver|com\\.sybase\\.jdbc3\\.jdbc\\.SybDriver|com\\.kingbase\\.Driver|dm\\.jdbc\\.driver\\.DmDriver", 0)
+	);
+};
+
+
+ Q�؍��	��q                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                QB version=20095;
+
+web_scan:
+{
+	app_rule_ver=4;
+	cgi_rule_ver=7;
+	websvr_type_rule_ver=1;
+	scan_interval=60;
+	chkwsc_interval=300;
+	alarm_interval=3600;
+	poll_info_interval = 86400;
+
+	max_cgipath_num=1024;
+	cgipath_sendcache=1024;
+	max_cgi_num=50000;
+	cgi_sendcache=5000;
+
+	max_webserver_num=32;
+	max_webshell_size=1048576;
+	max_webappverfile_size=1048576;
+	max_webapp_num=10240;
+	alarmfile_reportchars_num=255;
+	rpt_prefix_len=100;
+	rpt_match_len=255;
+	max_send_len=2048;
+
+	reload_webshell_pattern=1;
+	recheck_cgi=0;
+	max_report_unsafe_dir=5;
+
+	basemsg_interval = 86400;
+	inotifyqueue_overflow_interval = 86400;
+};
+
+web_guard:
+{
+	max_inotify_wd_num=1600000;
+	max_inotify_alarm_num=100;
+	max_inotify_modify_file_num=2000;
+	max_inotify_events_num=327679;
+	is_check_picture=1;
+	is_check_flash=0;
+	inotify_alarm_interval=2;
+	inotify_check_modify_interval=30;
+	report_inotify_num_interval=3600;
+};
+
+web_statis:
+{
+	thre_ic = 0.0236;
+	thre_entroy = 5.5801;
+	thre_wordlen = 2291;
+	thre_dcp = 0.2727;
+};
+
+websvr_type:
+{
+	all_websvr_type =
+	(
+		("apache", 0),
+		("tomcat", 1),
+		("nginx", 2),
+		("lighttpd", 3),
+		("resin", 4),
+		("qzhttp", 5),
+		("tomcat_jsvc", 6)
+	);
+	apache = 
+	(
+		("httpd", ""),
+		("httpd2-prefork", ""),
+		("httpd.worker", ""),
+		("apache2", ""),
+		("lt-httpd", ""),
+		("httpd_fix", ""),
+		("httpd2-worker", ""),
+		("httpd.httpd", ""),
+		("httpd.0", ""),
+		("apache", "")
+	);	
+	tomcat = 
+	(
+		("java", "catalina"),
+		("java", "tomcat"),
+		("glacier_cgi_java", "catalina"),
+		("glacier_cgi_java", "tomcat"),
+		("java.gdt.dmp.war", "catalina"),
+		("java.gdt.dmp.war", "tomcat"),
+		("java.gdt.placementApi", "catalina"),
+		("java.gdt.placementApi", "tomcat"),
+		("java_gdt_buyerapi_war", "catalina"),
+		("java_gdt_buyerapi_war", "tomcat"),		
+		("java.gdt.sdk.war", "catalina"),
+		("java.gdt.sdk.war", "tomcat"),
+		("java_gdt_dmposs_war", "catalina"),
+		("java_gdt_dmposs_war", "tomcat"),
+		("java_gdt_oos_pub_war-1.0", "catalina"),
+		("java_gdt_oos_pub_war-1.0", "tomcat"),
+		("java.gdt.Portal.war", "catalina"),
+		("java.gdt.Portal.war", "tomcat"),
+		("java_gdt_Snapshot_war-1.0", "catalina"),
+		("java_gdt_Snapshot_war-1.0", "tomcat"),
+		("java.gdt.mms.war", "catalina"),
+		("java.gdt.mms.war", "tomcat"),
+		("java.gdt.adnetwork_adnetwork.war", "catalina"),
+		("java.gdt.adnetwork_adnetwork.war", "tomcat"),
+		("java_gdt_dspreview_war", "catalina"),
+		("java_gdt_dspreview_war", "tomcat"),
+		("java_gdt_adx_dsp_war-1.0", "catalina"),
+		("java_gdt_adx_dsp_war-1.0", "tomcat"),
+		("java_gdt_innerssp_war", "catalina"),
+		("java_gdt_innerssp_war", "tomcat"),
+		("javacgi_qqconnect_api", "catalina"),
+		("javacgi_qqconnect_api", "tomcat"),
+		("gdt_review_web_war_java", "catalina"),
+		("gdt_review_web_war_java", "tomcat"),
+		("java.gdt.dev_api", "catalina"),
+		("java.gdt.dev_api", "tomcat"),
+		("gdt_review_onlineads_java", "catalina"),
+		("gdt_review_onlineads_java", "tomcat"),
+		("java.gdt.adEventMgr_api.war", "catalina"),
+		("java.gdt.adEventMgr_api.war", "tomcat"),
+		("java.gdt.adnetworkoss.war", "catalina"),
+		("java.gdt.adnetworkoss.war", "tomcat"),
+		("java_gdt_oos_web_war-1.0", "catalina"),
+		("java_gdt_oos_web_war-1.0", "tomcat"),
+		("java.gdt.review_review.war", "catalina"),
+		("java.gdt.review_review.war", "tomcat"),
+		("java.gdt.ueet.war", "catalina"),
+		("java.gdt.ueet.war", "tomcat"),
+		("java.gdt.union_hawk", "catalina"),
+		("java.gdt.union_hawk", "tomcat"),
+		("java_gdt_adnetworkoss1_war", "catalina"),
+		("java_gdt_adnetworkoss1_war", "tomcat")
+	);
+	nginx = 
+	(
+		("nginx", ""),
+		("gdt_nginx_proxy", ""),
+		("nginx-x64-ms", ""),
+		("nginx-x64", ""),
+		("nginx-x32-ms", ""),
+		("nginx-x64-boss", ""),
+		("nginx_forward", ""),
+		("nginx_tlinux_x64_ms", ""),
+		("nginx.1.6.2", ""),
+		("nginx_Wechat", ""),
+		("nginx-x64-nodebug", ""),
+		("cdn_nginx", ""),
+		("nginx.old", ""),
+		("nginx-x64-ms-cdncombo", ""),
+		("nginx_tlinux_x64", ""),
+		("nginx-x64-concat", ""),
+		("nginx-x64-debug", ""),
+		("nginx.menshen", ""),
+		("nginx-x64-mat1-nodebug", ""),
+		("nginx_dynamic", ""),
+		("nginx_proxy", ""),
+		("nginx-1.8.1", ""),
+		("nginx-1.0.6-x64-wd-nodebug", ""),
+		("nginx_static", ""),
+		("nginx_kf", ""),
+		("nginx_exporter", ""),
+		("tnginx", ""),
+		("nginx-x64-wd-ms", ""),
+		("nginx-1.7.8", ""),
+		("https_nginx", ""),
+		("mmdeploytgw_nginx", ""),
+		("nginx-hybin", ""),
+		("nginx-1.8.0", ""),
+		("nginx-1.5.6", ""),
+		("gdt_nginx_proxy_new", ""),
+		("nginxdebug", ""),
+		("nginx_with_ssl_memshen", ""),
+		("nginx_upptpp", ""),
+		("nginx_tnginx_1.0.42", ""),
+		("nginx_pre", ""),
+		("nginx_mt", ""),
+		("nginx_log", ""),
+		("nginx_big5", ""),
+		("nginx443", ""),
+		("nginx17", ""),
+		("nginx.new", ""),
+		("nginx.bak", ""),
+		("nginx-x64-mat1", ""),
+		("qnginx", ""),
+		("nginx_sels_x64", ""),
+		("nginx-x64-suse-boss", ""),
+		("nginx-x32", ""),
+		("nginx-1.0.6-x32-wd-nodebug", ""),
+		("qqnginx", "")
+	);
+	lighttpd = 
+	(
+		("lighttp", ""),
+		("lighttp2", ""),
+		("lighttp3", "")
+	);
+	resin = 
+	(
+		("java", "resin\.home")
+	);
+	qzhttp = 
+	(
+		("qzhttp", ""),
+		("qzhttp-gcc4.1-ver1.0.0", ""),
+		("frame_qzhttp", ""),
+		("qzhttp_openapi", ""),
+		("qzhttp-gcc4.1-ver1.0.0.field", "")
+	);
+	tomcat_jsvc =
+	(
+		("jsvc", "catalina"),
+		("jsvc", "tomcat")
+	);
+};
+
+file_type:
+{
+	cgi_file = "\\.(css|js|bmp|jpg|gif|png|flv|wmv|asf|asx|rm|rmvb|mpg|mpeg|mpe|3gp|mov|mp4|m4v|avi|mkv|vob|log|html|htm)$";
+	webshell_file = 
+	(
+		("php_shell", "\\.(php|php3)$"),
+		("jsp_shell", "\\.(jsp|jspx)$")
+	);
+};
+
+web_app_ver:
+{
+	/* app,type,file_path,ver_reg */
+	/* type:0, get ver from file_path */
+	/* type:1, use ver_reg, get ver from file content */
+	app_cfg = (
+		("struts", 0, "(?:/struts[\\d]*-core-(?<ver>[\\d\\.]+)\\.jar)$", ""),
+		("struts_rest", 0, "(?:/struts\\d*-rest-plugin-(?<ver>[\\d\\.]+)\\.jar)$", ""),
+		("struts1", 0, "(?:/(?<ver>struts)\\.jar)$", ""),
+		("shiro-core", 0, "(?:/shiro-core-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-all", 0, "(?:/shiro-all-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-web", 0, "(?:/shiro-web-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-aspectj", 0, "(?:/shiro-aspectj-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-cas", 0, "(?:/shiro-cas-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-ehcache", 0, "(?:/shiro-ehcache-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-features", 0, "(?:/shiro-features-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-guice", 0, "(?:/shiro-guice-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-quartz", 0, "(?:/shiro-quartz-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-spring", 0, "(?:/shiro-spring-(?<ver>[^/]*)\\.jar)$", ""),
+		("shiro-tools-hasher", 0, "(?:/shiro-tools-hasher-(?<ver>[^/]*)-cli\\.jar)$", ""),
+		("discuz_app", 0, "(?:uc_server/control/(?<ver>app).php$)", ""),
+		("discuz7", 1, "(?:/templates/uchome/discuz_style_uchome\\.xml)$", "<item\\s*id\\s*=\\s*\"Version\">\\s*<!\\[CDATA\\[(?<ver>[\\d\\.]+)\\]\\]>\\s*</item>"),
+		("discuzX", 1, "(?:/template/default/discuz_style_default\\.xml)$", "<item\\s*id\\s*=\\s*\"Version\">\\s*<!\\[CDATA\\[(?<ver>[\\d\\w\\W\\.]+?)\\]\\]>\\s*</item>"),
+		("discuz_version", 1, "(?:/source/discuz_version\\.php)$", "define\\('DISCUZ_VERSION',\\s*'(?<ver>.*)'"),
+		("discuz_release", 1, "(?:/source/discuz_version\\.php)$", "define\\('DISCUZ_RELEASE',\\s*'(?<ver>.*)'"),
+		("discuz_fixbug", 1, "(?:/source/discuz_version\\.php)$", "define\\('DISCUZ_FIXBUG',\\s*'(?<ver>.*)'"),
+		("uchome", 1, "(?:/space\\.php)$", "(?<ver>UCenter\\s*Home)"),
+		("wordpress", 1, "(?:/wp-includes/version\\.php)$", "\\$wp_version\\s*=\\s*'(?<ver>[\\d\\.]+)'"),
+		("ThinkPHP2", 1, "(?:/Common/defines\\.php)$", "\\s*define\\s*\\(\\s*'THINK_VERSION'\\s*,\\s*'(?<ver>[\\d\\.]+).*'\\s*\\)"),
+		("ThinkPHPRelease", 1, "(?:/Common/runtime\\.php)$", "\\s*define\\s*\\(\\s*'THINK_RELEASE'\\s*,\\s*'(?<ver>[\\d\\.]+)'\\s*\\)"),
+		("ThinkPHP3", 1, "(?:/Common/runtime\\.php)$", "\\s*define\\s*\\(\\s*'THINK_VERSION'\\s*,\\s*'(?<ver>[\\d\\.]+)'\\s*\\)"),
+		("ThinkPHP3.2", 1, "(?:/ThinkPHP\\.php)$", "const\\s*THINK_VERSION\\s*=\\s*'(?<ver>[\\d\\.]+)'\\s*;"),
+		("ThinkPHP3.2Release", 1, "(?:/ThinkPHP\\.php)$", "const\\s*THINK_RELEASE\\s*=\\s*'(?<ver>[\\d\\.]+)'\\s*;"),
+		("ThinkPHPatch2.1", 1, "(?:/Dispatcher\\.class\\.php)$", "unset\\(\\$_POST\\[\\$var\\],\\$_GET\\[\\$var\\]\\);\\s*return\\s*(?<ver>.*?);\\s*\\}"),
+		("ThinkPHPatch2.2-3.0", 1, "(?:/Dispatcher\\.class\\.php)$", "\\*\\s*@version\\s*\\$Id:\\s*Dispatcher\\.class\\.php\\s*(?<ver>\\d*)\\s*"),
+		("phpMyAdmin", 1, "(?:/libraries/(Config\\.class\\.php|Config\\.php))$", "\\(\\s*'PMA_VERSION'\\s*,\\s*'(?<ver>[\\d\\.]+)'\\)"),
+		("FckEditor0.8-2.0", 1, "(?:/dialog/fck_about\\.html)$", "(version|version</span>) \\s*<b>(?<ver>(\\d\.)*\\d.*?)</b></td>"),
+		("FckEditor2.0-2.3", 1, "(?:/_whatsnew\\.html)$", "FCKeditor(.*\\s)*<body>\\s*<[Hh]3>\\s*Version\\s*(?<ver>(\\d\\.)*\\d)(&nbsp;)?\\s*\.*</[Hh]3>"),
+		("FckEditor2.3+", 1, "(?:/fckeditor\\.js)$","(\\s*\\*\\s*Version:\\s*((?<ver>(\\d+\.)\\d+\.*)))|(FCKeditor\\.prototype\\.Version\\s+=\\s'(?<ver>(\\d+\\.)*\\d+\.*)'\\s;)"),
+		("fckeditor_java", 0, "(?i)fckeditor(-java-core)?-(?<ver>.*)\\.jar$", ""),
+		("ckeditor_java", 0, "(?i)ckeditor(-java-core)?-(?<ver>.*)\\.jar$", ""),
+		("CkEditor", 1, "(?:/ckeditor\\.js)$", ",version:['\"](?<ver>(\\d+\\.)*\\d)['\"],"),
+		("xwork", 0, "(?:/xwork-(core-)?(?<ver>[\\d\\.]+)\\.jar)$",""),
+		("dokuwiki", 0, "(?:/(?<ver>doku)\\.php)$", ""),
+		("cookie_xss", 0, "(?i)(?<ver>loginmanager.*)\\.js$", ""),
+		("cookie_xss3", 1, "(?i)\\.js$","(?<ver>(document\\.cookie\\.match\\(RegExp\\(\"\\(\\^\\|\\s*\\)\"|new\\s*RegExp\\(\"\\(\\^\\|\\s*\\)\"|document\\.cookie\\.indexOf\\(\";\"|document\\.cookie\\.split\\(\"\\s*\"\\);|new\\s*RegExp\\(\"\\(\\^\\|;\\|\\\\s\\)))"),
+		("php_mailer", 1, "(?i)mail.*?\\.php$","public +?\\$Version +?= +?'(?<ver>[^']*?)';"),
+		("ecmall", 1, "(?:/ecmall\\.php)$","define\\('VERSION', +'(?<ver>[^']*)'\\);"),
+		("pmwiki", 0, "(?:/(?<ver>pmwiki)\\.php)$", ""),
+		("commons-fileupload", 0, "(?:/commons-fileupload(?<ver>.*)\\.jar)$", ""),
+		("danger_wordpress_plugin", 0, "/wp-content/plugins/(?<ver>.*?)/readme\\.txt$",""),
+		("danger_suffix", 0, "(?i)(?:(?<ver>(/[^/]*(\\.bak|\\.old|\\.zip|\\.rar|\\.war|\\.7z|\\.tgz|\\.gz|\\.bz2|\\.tar))$))", ""),
+		("guzzle", 1, "(?i)/ClientInterface\\.php$","const\\s*VERSION\\s*=\\s*'(?<ver>[^']*)';"),
+		("danger_proxy",1, "/[^/]*?\\.php$","(?i)(?<ver>getenv\\s*\\(\\s*['\"]\\s*HTTP_PROXY\\s*['\"]\\s*\\)|\\$_SERVER\\[\\s*['\"]\\s*HTTP_PROXY\\s*['\"]\\s*\\])"),
+		("artax", 1, "(?i)/HttpSocketPool\\.php$","(?i)(?<ver>getenv\\('http_proxy'\\))"),
+		("artax_safe", 1, "(?i)/HttpSocketPool\\.php$","(?<ver>PHP_SAPI\\s*!=\\s*\"cli\")"),
+		("fastjson", 0, "fastjson-(?<ver>.*)\\.jar$", "")
+	);
+};
+
+app_forbid_dir:
+{
+	/* app, dir*/
+	forbid_dir = (
+		("discuzX3", ".+(/config)$"),
+		("discuzX3", ".+(/data)$"),
+		("discuzX3", ".+(/uc_client/data)$"),
+		("discuzX3", ".+(/uc_server/data)$"),
+		("wordpress", ".+(/wp-content/uploads)$"),
+		("fckeditor", ".+(/userfiles)$")
+	);
+};
+
+php_shell:
+{
+	/* name, caseless, id, pattern, pcre_dotall? */
+	pattern_list = (
+		("common_webshell1", 0, 10101, "(?i)[\\r\\n;/\\*]+\\s*\\b(include|require)(_once)?\\b[\\s\\(]*['\"][^\\n'\"]{1,100}((\\.(jpg|png|txt|jpeg|log|tmp|db|cache)|\\_(tmp|log))|((http|https|file|php|data|ftp)\\://.{0,25}))['\"][\\s\\)]*[\\r\\n;/\\*]+",0),
+		("common_webshell2", 0, 10102, "(?i)(?<!->)\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\b[/*\\s]*\\(+[/*\\s]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*(\\$_(GET|POST|REQUEST|COOKIE).{0,25}))",0),
+		("common_webshell3", 0, 10103, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*(\\$_(GET|POST|REQUEST|COOKIE).{0,25});[\\s\\S]{0,200}(?<!\\>)\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\b[/*\\s]*\\(+[\\s\"/*]*(\\$\\s*\\1|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(\"]*\\$\\s*\\1))",0),
+		("common_webshell4", 0, 10104, "(?i)(preg_replace|preg_filter)[/*\\s]*\\(+[/*\\s]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|[^,]{0,250}chr[\\s\\(](101|0x65|0145|\\d+)[^,]{0,25}\\s*|['\"]\\s*(([^\\s])[^,]{0,20}\\7['\"]*|[\\(\\}\\[].{0,20}[\\(\\}\\]])\\w*e\\w*['\"])\\s*,([^\\),]*(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)|((\\$_(GET|POST|REQUEST|COOKIE).{0,25})))",0),
+		("common_webshell5", 0, 10105, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|[^;]*chr[\\s\\(]*(101|0x65|0145|\\d+)|['\"](/[^/]*/|\\|[^\\|]*\\||\\\\'[^']*')\\w{0,5}e\\w{0,5}['\"])[\\s\\S]{0,1000}(preg_replace|preg_filter)[/*\\s]*\\([/*\\s]*\\$\\s*\\1.{0,30}(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)",0),
+		("common_webshell6", 0, 10106, "(?i)\\$\\s*(\\w+)\\s*=\\s*(\\$_(GET|POST|REQUEST|COOKIE).{0,25})[\\s\\S]{0,1000}(preg_replace|preg_filter)[/*\\s]*\\(+[/*\\s]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|[^,]{0,250}chr[\\s\\(](101|0x65|0145|\\d+)[^,]{0,25}\\s*|['\"]\\s*(([^\\s])[^,]{0,20}\\10|[\\(\\}\\[].{0,20}[\\(\\}\\]])\\w*e\\w*['\"])\\s*,([^\\)]*(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)|\\s*\\$\\1)",0),
+		("common_webshell7", 0, 10107, "(?i)(array_map|call_user_func|call_user_func_array|new\\s*ReflectionFunction|register_shutdown_function|register_tick_function|new\\s*ArrayObject[\\s\\S]*->u[ak]sort)\\s*\\(+\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|[^'\"]*\\\\x).{0,200}|(\\$_(GET|POST|REQUEST|COOKIE)\\[[^,;\\)]{0,250},[^;\\),]{0,50}\\$[^;\\),]{0,50}\\)))",0),
+		("common_webshell8", 0, 10108, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec))[\\s\\S]{0,200}(?<!\\>)\\b(array_map|call_user_func|call_user_func_array|new\\s*ReflectionFunction|register_shutdown_function|register_tick_function|new\\s*ArrayObject[\\s\\S]*->u[ak]sort)\\b\\s*\\(+\\s*(\\$\\s*\\1|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))[^,;]*,[^;\\)]{0,50}\\$[^;\\)]{0,50}\\)",0),
+		("common_webshell9", 0, 10109, "(?i)((array_filter|array_reduce|array_diff_ukey|array_udiff|array_walk|uasort|uksort|usort|new\\s*SQLite3[\\s\\S]*->\\s*createFunction)\\s*\\(+\\s*.{1,100}|PDO::FETCH_FUNC\\s*),\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\s*['\"]|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]+.{1,25}|(\\$_(GET|POST|REQUEST|COOKIE).{0,25}))\\s*\\)",0),
+		("common_webshell10", 0, 10110, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*((\\$_(GET|POST|REQUEST|COOKIE).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|[^,;]*?\\\\x|[^,;]*?['\"]\\s*\\.\\s*['\"]))[\\s\\S]{0,1000}(?<!\\>)((array_filter|array_reduce|array_diff_ukey|array_udiff|array_walk|uasort|uksort|usort|new\\s*SQLite3[\\s\\S]*->\\s*createFunction)\\s*\\(+[^,]*\\$[^,]*|PDO::FETCH_FUNC\\s*),\\s*(\\$\\s*\\1\\s*\\)|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))",0),
+		("common_webshell11", 0, 10111, "(?i)\\$(\\w*)\\s*=\\s*\\bcreate_function\\b\\s*\\(+\\s*[^;\\n\\r\\)]{1,100},\\s*(['\"]\\s*[^;\\n\\r\\)]{0,100}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|poc_open|pcntl_exec).{1,600}\\s*['\"]|[^,]{0,100}(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{1,})|[^,\\n\\r\\)]{0,100}file_get_contents.{1,})\\s*\\)[\\s\\S]+\\$\\1\\s*\\([^\\)]*\\)",0),
+		("common_webshell12", 0, 10112, "(?i)\\$(\\w*)\\s*=\\s*\\bcreate_function\\b\\s*\\([^;]*;[\\s\\S]*\\$\\1\\s*\\([^\\)]*(['\"]\\s*[^;\\n\\r\\)]{0,100}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|poc_open|pcntl_exec).{1,600}\\s*['\"]|[^;\\n\\r]{0,100}(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{1,})|[^;\\n\\r\\)]{0,100}file_get_contents.{1,})",0),
+		("common_webshell13", 0, 10113, "(?i)\\$\\s*(\\w+)\\s*=[\\s\\(\\{]*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*.{0,100}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec).{1,100}\\s*['\"]|file_get_contents)[\\s\\S]{0,200}create_function\\s*\\(+[^,]{1,100},['\"\\s]*(\\$\\s*\\1['\"\\s]*\\)|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))",0),
+		("common_webshell14", 0, 10114, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\s*['\"]|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)\\s*\\()[\\s\\S]{0,200}(?<![:>\\s])\\s*\\$\\1\\s*\\(+[^\\)]*(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})",0),
+		("common_webshell15", 0, 10115, "(?i)sqlite_create_function\\s*\\([\\s\\S]{0,200}(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)|(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)[\\s\\S]{0,200}sqlite_create_function\\s*\\(",0),
+		("common_webshell25", 0, 10116, "(?i)\\b(filter_var|filter_var_array)\\b\\s*\\(.*FILTER_CALLBACK[^;]*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec))",0),
+		("common_webshell16", 0, 10117, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\s*['\"]|(base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)\\s*\\()[\\s\\S]{0,200}\\b(filter_var|filter_var_array)\\b\\s*\\(.*FILTER_CALLBACK[^;]*\\$\\1",0),
+		("common_webshell17", 0, 10118, "(?i)\\b(mb_ereg_replace|mb_eregi_replace)\\b\\s*\\((.*,){3}\\s*(['\"][^,\"'\\)]*e[^,\"'\\)]*['\"]|.*(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25}).*|chr\\s*\\(\\s*101|chr\\s*\\(\\s*0x65|chr\\s*\\(\\s*0145)\\s*\\)",0),
+		("common_webshell25", 0, 10119, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{3,25})|['\"][^;]*e|[^;]*chr[\\s\\(]*(101|0x65|0145))[\\s\\S]{0,200}\\b(mb_ereg_replace|mb_eregi_replace)\\b\\s*\\((.*,){3}\\s*\\$\\1",0),
+		("common_webshell18", 0, 10120, "(?i)array_walk(_recursive)?\\s*\\([^;,]*,\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|preg_replace)\\s*['\"]|(\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25}))",0),
+		("common_webshell19", 0, 10121, "(?i)\\$\\s*(\\w+)\\s*=\\s*((\\$_(GET|POST|REQUEST|COOKIE|SERVER).{0,25})|['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|preg_replace))[\\s\\S]{0,200}array_walk(_recursive)?\\s*\\([^;,]*,\\s*(\\$\\s*\\1|((base64_decode|gzinflate|gzuncompress|gzdecode|str_rot13)[\\s\\(]*\\$\\s*\\1))",0),
+		("common_webshell20", 0, 10122, "(?i)\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec|include)\\b\\s*\\(\\s*(file_get_contents\\s*\\(\\s*)?['\"]php://input",0),
+		("common_webshell21", 0, 10123, "^(\\xff\\xd8|\\x89\\x50|GIF89a|GIF87a|BM|\\x00\\x00\\x01\\x00\\x01)[\\s\\S]*<\\?\\s*php",0),
+		("common_webshell22", 0, 10124, "\\$(\\w)=\\$[a-zA-Z]\\('',\\$\\w\\);\\$\\1\\(\\);",0),
+		("common_webshell23", 0, 10125, "(?i)\\$(\\w+)\\s*=\\s*str_replace\\s*\\([\\s\\S]*\\$(\\w+)\\s*=\\s*\\$(\\w+)(([\\s\\S]{0,255})|(\\s*\\(\\'\\',\\s*(\\$(\\w+)\\s*\\(\\s*)+))\\$\\1\\s*\\([\\s\\S]{0,100};?\\s*\\$\\2\\(?\\s*\\)",0),
+		("common_webshell24", 0, 10126, "(?i)ob_start\\s*\\(+\\s*(['\"]\\s*(eval|assert|ass\\\\x65rt|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec).{0,20}|['\"]\\s*\\w+[\\s\\S]{1,50}phpinfo\\s*\\(\\s*\\))",0),
+		("common_webshell25", 0, 10127, "\\b(assert|eval|system|exec|shell_exec|passthru|popen|proc_open|pcntl_exec)\\b\\s*\\(((\\$_SERVER|\\$_ENV|getenv|\\$GLOBALS)\\s*[\\[\\(]\\s*['\"]+(REQUEST_URI|QUERY_STRING|HTTP_[\\w_]+|REMOTE_[\\w_])['\"\\s]+\\s*[\\]\\)]|php://input|exif_read_data\\s*\\()",0),
+		("common_webshell24", 0, 10128, "eval\\(\"\\?>\"\\.|gzinflate\\(base64_decode\\(|eval\\(base64_decode\\(|cat\\s*/etc/passwd|Safe_Mode\\s*Bypass",0),
+		("common_webshell25", 0, 10129, "\\$_\\[\\$_|\\${\"_P\"\\.|a(.)s\\1s\\1e\\1r\\1t|'e'\\.'v'\\.'a'\\.'l|687474703a2f2f626c616b696e2e64756170702e636f6d2f7631|python_eval\\(\"import os\\\\nos.system\\(|\\$bind_pl\\s*=\\s*\"IyEvdXNyL2Jpbi9lbnYgcGV|phpsocks5_encrypt\\s*\\(|eNrs/Vmv41iWJgq+ZwH1H7wdAWRksypJihRF3kQ0mvMsihTnuoUA53meeVG/valj5mbuHpF9b6P7se",0),
+		("common_webshell25", 0, 10130, "preg_replace\\s*\\(\\s*['\"][^;]*e[^;]*['\"],([^;]{0,30}\\\\x|[^;\\)]{200,300})|\\$back_connect=\"IyEvdXNyL2Jpbi9wZXJsDQp1c2UgU2|define\\('gzip',function_exists\\(\"ob_gzhandler\"\\)|chr\\(112\\)\\.chr\\(97\\)\\.chr\\(115\\)\\.chr\\(115\\)|687474703a2f2f377368656c",0),
+		("common_webshell24", 0, 10131, "ini_get\\s*\\(\\s*\"disable_functions\"\\s*\\)|\\d\\s*=>\\s*array\\s*\\(\\s*['\"]\\s*pipe\\s*['\"]|gzuncompress\\(base64_decode\\(|crypt\\(\\$_SERVER\\['HTTP_H0ST'\\],\\d+\\)==|if\\(file_exists\\(\\$settings\\['STOPFILE'\\]\\)\\)",0),
+		("common_webshell25", 0, 10132, "\\$nofuncs='no\\s*exec\\s*functions|udf\\.dll|\\$b374k|POWER-BY\\s*WWW.XXDDOS.COM|<title>Safes\\s*Mode\\s*Shell</title>|Siyanur\\.PHP\\s*</font>|c999shexit\\(\\)|\\$c99sh_|c99_sess_put\\(|Coded\\s*by\\s*cyb3r|cyb3r_getupdate\\(|coded\\s*by\\s*tjomi4|john\\.barker446@gmail\\.com|eval\\(\"\\\\\\$x=gzin\"|eval\\(\"\\?>\"\\.gzinflate\\(base64_decode\\(|eval\\(gzinflate\\(base64_decode\\(|eval\\(gzuncompress\\(base64_decode\\(|eval\\(gzinflate\\(str_rot13\\(base64_decode\\(|function_exists\\(\"zigetwar_buff_prepare\"\\)|dQ99shell|r57shell|c99shell|lama's'hell\\s*v|Carbylamine\\s*PHP\\s*Encoder|Safe\\s*Mode\\s*Shell|\\$dI3h=\\${'_REQUEST'};|new\\s*COM\\(\"IIS://localhost/w3svc\"\\)|n57http-based\\[\\s*-\\]terminal|Dosya\\s*Olu|errorlog\\(\"BACKEND:\\s*startReDuh,|form\\s*name=sh311Form|PHPJackal<br>|Reddragonfly's\\s*WebShell|\\(\"system\"==\\$seletefunc\\)\\?system\\(\\$shellcmd\\)|eNrsvGmT40iSKPZ5xmz|CrystalShell\\s*v\\.|Special\\s*99\\s*Shell|Simple\\s*PHP\\s*Mysql\\s*client|'_de'\\.'code'|phpsocks5_encrypt\\(|define\\('PHPSHELL_VERSION',|ZXZhbCgkX1BPU1RbMV0p|\\$__H_H\\(\\$__C_C",0),
+		("common_webshell25", 0, 10133, "PD9waHANCiRzX3ZlciA9ICIxLjAiOw0KJHNfdGl0bGUgPSAiWG5vbnltb3V4IFNoZWxsIC|GFnyF4lgiGXW2N7BNyL5EEyQA42LdZtao2S9f|IyEvdXNyL2Jpbi9wZXJsDQokU0hFTEw9Ii9iaW4vYmFzaCAtaSI7|setcookie\\(\"N3tsh_surl\"\\);|function\\s*Tihuan_Auto|\\$_COOKIE\\['b374k'\\]|function_exists\\(\"k1r4_sess_put\"\\)|http://www.7jyewu.cn/|scookie\\('phpspypass|PHVayv.php\\?duzkaydet=|phpRemoteView</a>|define\\('envlpass',|KingDefacer_getupdate\\(|relative2absolute\\(|Host:\\s*old.zone-h.org|<h3>PHPKonsole</h3>|\\$_SESSION\\['hassubdirs'\\]\\[\\$treeroot\\]|strtolower\\(\\$cmd\\)\\s*==\\s*\"canirun\"|\\$shell\\s*=\\s*'uname\\s*-a;\\s*w;\\s*id;|Avrasya\\s*Veri\\s*ve\\s*NetWork|<h1>Linux Shells</h1>|\\$MyShellVersion\\s*=\\s*\"MyShell|<a\\s*href=\"http://ihacklog.com/\"|setcookie\\(\\s*\"mysql_web_admin_username\"\\s*\\)|<title>PHP\\s*Shell\\s*[^\\n\\r]*</title>|\\$OOO000000=urldecode|1MSSYowqjzlVVAwAoHHFXzQ5Lc|'xiaoqiwangluo'|EqQC1FhyXxpEi7l2g\\+yNjW62S|\\$_uU\\(83\\)\\.\\$_uU\\(84\\)|7kyJ7kSKioDTWVWeRB3TiciL1UjcmRiLn4SKiAETs90cuZlTz5mROtHWHdWfRt0ZupmVRNTU2Y2MVZkT8|<title>\\s*ARS\\s*Terminator\\s*Shell</title>|base64_decode\\(\"R0lGODdhEgASAKEAAO7u7gAAAJmZmQAAACwAAA|\\\\x50\\\\x4b\\\\x03\\\\x04\\\\x0a\\\\x00\\\\x00\\\\x00\\\\x00|'<title>W3D\\s*Shell|\\$back_connect=\"IyEvdXNyL2Jpbi9wZXJsD",0),
+		("common_webshell30", 0, 10135,	"\\$(\\w+)[\\s]*\\=[\\s]*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}[\\s\\S]*(?<!\\>)\\$(?:\\1\\(\\s*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}\\s*\\)|(\\w+)\\s*\\=\\s*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}[\\s\\S]*(?<!\\>)\\$(\\1\\(\\s*\\$\\2|\\2\\(\\s*\\$\\1)\\s*\\)|_(?:POST|GET|REQUEST|COOKIE|SERVER).{0,25}\\(\\s*\\$\\1\\s*\\))|\\$_(?:POST|GET|REQUEST|COOKIE|SERVER)\\[(['\"]\\w+['\"]|\\d+)\\]\\(\\s*\\$_(?:POST|GET|REQUEST|COOKIE|SERVER)\\[(['\"]\\w+['\"]|\\d+)\\]\\s*\\)", 0)
+	);
+};
+
+jsp_shell:
+{
+	pattern_list = (
+		("str_pattern", 0, 1001, "\\bJFolder|\\bwebshell|\\bvonloesch\\.de|reDuh\\.jsp|QQ:179189585|JSP\\s*文件管理器|\\bJSPSpy|\\bKJ021320", 0),
+		("exec_cmd", 1, 3001, "(?:(?:java\\.lang\\.)?Runtime)?\\s*(\\w+)\\s*=\\s*(?:java\\.lang\\.)?Runtime\\.getRuntime\\(\\)[\\s\\S]*\\1\\.exec\\(.*?\\)", 0),
+		("exec_cmd2", 1, 3002, "new\\s*(java\\.io\\.)?ProcessBuilder\\(.*?\\)", 0),
+		("browse_file", 1, 5001, "(\\.(listFiles|list|listRoots)\\s*\\(.+\\.(readLine|read)\\s*\\(.+\\.write\\s*\\()|(\\.(readLine|read)\\s*\\(.+\\.write\\s*\\(.+\\.(listFiles|list|listRoots)\\s*\\()", 1),
+		("create_file", 0, 5002, "new\\s*(java\\.io\\.)?(FileOutputStream|PrintWriter|FileWriter|RandomAccessFile)\\(.*?\\)", 0),
+		("upload_file", 0, 5003, "new\\s*((java\\.io\\.)?ServletFileUpload|(com\\.jspsmart\\.upload\\.)?SmartUpload)\\(\\)", 0),
+		("net_socket", 0, 7001, "new\\s*(java\\.net\\.)?ServerSocket\\(.*?\\)", 0),
+		("net_socket2", 0, 7002, "new\\s*(java\\.net\\.)?Socket\\(.*?\\)", 0),
+		("net_socket3", 0, 7003, "new\\s*(java\\.net\\.)?InetSocketAddress\\(.*?\\)", 0),
+		("http_connect", 0, 7004, "(\\w+)\\s*=\\s*new\\s*(java\\.net\\.)?URL\\(.*?\\)[\\s\\S]*\\1\\.openConnection\\(\\)", 0),
+		("java_command", 0, 12101, "Runtime\\.getRuntime\\(\\)\\.exec", 0),
+		("java_unicode", 0, 12102, "(\\\\u00\\w\\w){3,}", 0),
+		("java_class_invoke", 0, 12103, "\\.getMethod\\(.*?\\.invoke", 0),
+		("java_class_invoke2", 0, 12104, "(?:(?:java\\.lang\\.reflect\\.)?Method)?\\s*(\\w+)\\s*=\\s*.*\\.getMethod\\([\\s\\S]*\\1\\.invoke\\(.*?\\)", 0),
+		("java_url_loader", 0, 12105, "java\\.net\\.URLClassLoader", 0),
+		("sql_connect", 0, 12301, "(java\\.sql\\.)?DriverManager\\.(getConnection|registerDriver)\\(.*?\\)", 0),
+		("sql_query", 0, 12302, "(ResultSet)?\\s*\\w+\\s*=\\s*\\w+\\.executeQuery\\(.*?\\)", 0),
+		("jdbc_drivers", 0, 12303, "COM\\.ibm\\.db2\\.jdbc\\.app\\.DB2Driver|COM\\.ibm\\.db2\\.jdbc\\.DB2XADataSource|COM\\.ibm\\.db2\\.jdbc\\.net\\.DB2Driver|com\\.informix\\.jdbc\\.IfxDriver|com\\.informix\\.jdbcx\\.IfxXADataSource|org\\.apache\\.derby\\.jdbc\\.ClientDriver|com\\.microsoft\\.sqlserver\\.jdbc\\.SQLServerDriver|com\\.microsoft\\.jdbc\\.sqlserver\\.SQLServerDriver|com\\.mysql\\.jdbc\\.Driver|org\\.gjt\\.mm\\.mysql\\.Driver|oracle\\.jdbc\\.driver\\.OracleDriver|oracle\\.jdbc\\.xa\\.client\\.OracleXADataSource|oracle\\.jdbc\\.driver\\.OracleDriver|oracle\\.jdbc\\.xa\\.client\\.OracleXADataSource|com\\.tongweb\\.jdbc\\.OracleDriverWrapper|org\\.postgresql\\.Driver|com\\.sybase\\.jdbc\\.SybDriver|com\\.sybase\\.jdbc2\\.jdbc\\.SybXADataSource|org\\.hsqldb\\.jdbcDriver|com\\.sybase\\.jdbc3\\.jdbc\\.SybDriver|com\\.kingbase\\.Driver|dm\\.jdbc\\.driver\\.DmDriver", 0)
+	);
+};
+
+

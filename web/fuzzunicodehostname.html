@@ -1,0 +1,13 @@
+<a id="a"></a>
+<script type="text/javascript">
+	for(var i=0; i<0x10ffff; i++){
+		try{
+			var chr = String.fromCodePoint(i);
+			a.href="http://"+chr;
+			if(a.hostname != chr && !/^xn--/i.test(a.hostname) && 1+a.hostname.charCodeAt()){
+				document.write(chr + " : " + a.hostname + '<br>')
+			}
+
+		} catch(e){}
+	}
+</script>
